@@ -15,6 +15,7 @@ public class AddressbookrestapiApplication {
 		ApplicationContext context=SpringApplication.run(AddressbookrestapiApplication.class, args);
 		log.info("AddressBook App started in {} Envoronment",
 				context.getEnvironment().getProperty("environment"));
+		log.info("Employee payroll db user is {} ",context.getEnvironment().getProperty("spring.datasource.username"));
 	}
 
 }
