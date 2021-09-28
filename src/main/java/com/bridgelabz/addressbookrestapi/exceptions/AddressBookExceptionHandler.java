@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.bridgelabz.addressbookrestapi.dto.ResponseDTO;
+//import com.example.EmployeePayrollApp.exceptions.EmployeePayrollException;
 
 
 @ControllerAdvice
@@ -23,6 +24,12 @@ public class AddressBookExceptionHandler {
 				.map(objErr->objErr.getDefaultMessage())
 				.collect(Collectors.toList());
 		ResponseDTO responseDTO=new ResponseDTO("Exception while processing REST request",errMesg);
+		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(AddressBookException.class)
+	public ResponseEntity<ResponseDTO> handleEmployeePayrollException(AddressBookException exception){
+		ResponseDTO responseDTO=new ResponseDTO("Exception while processing REST request",exception.getMessage());
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.BAD_REQUEST);
 	}
 	

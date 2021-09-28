@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.addressbookrestapi.dto.AddressBookDTO;
+import com.bridgelabz.addressbookrestapi.exceptions.AddressBookException;
 import com.bridgelabz.addressbookrestapi.model.AddressBookData;
+import com.example.EmployeePayrollApp.exceptions.EmployeePayrollException;
 
 @Service
 public class AddressBookService implements IAddressBookService {
@@ -20,7 +22,10 @@ public class AddressBookService implements IAddressBookService {
 
 	public AddressBookData getcontactDataNyId(int contactId) {
 		// TODO Auto-generated method stub
-		return addressbookList.get(contactId-1);
+		return addressbookList.stream().filter(contactData->contactData.getContactId()==contactId)
+				.findFirst()
+				.orElseThrow(()->new AddressBookException("contact not found"));
+	
 	}
 
 	public AddressBookData createContact(AddressBookDTO addressbookDTO) {
