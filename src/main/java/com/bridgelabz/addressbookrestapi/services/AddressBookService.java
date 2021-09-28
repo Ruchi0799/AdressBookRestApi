@@ -26,7 +26,7 @@ public class AddressBookService implements IAddressBookService {
 	public AddressBookData createContact(AddressBookDTO addressbookDTO) {
 		// TODO Auto-generated method stub
 		AddressBookData addressbookData=null;
-		addressbookData=new AddressBookData(1,addressbookDTO);
+		addressbookData=new AddressBookData(addressbookList.size()+1,addressbookDTO);
 		addressbookList.add(addressbookData);
 		return addressbookData;
 	}

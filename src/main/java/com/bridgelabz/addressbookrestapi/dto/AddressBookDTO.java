@@ -1,7 +1,13 @@
 package com.bridgelabz.addressbookrestapi.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class AddressBookDTO {
+	
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee name Invalid")
 	public String name;
+	
+	@Pattern(regexp="(0/91)?[7-9][0-9]{9}",message="Phone No Invalid")
 	public String phoneNo;
 	@Override
 	public String toString() {
