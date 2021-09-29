@@ -10,7 +10,13 @@ import com.bridgelabz.addressbookrestapi.dto.AddressBookDTO;
 
 import lombok.Data;
 
+@Entity
+@Table(name="contacts")
 public @Data class AddressBookData {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="contact_id")
 	private int contactId;
 	private String name;
 	private String phoneNo;
@@ -23,9 +29,12 @@ public @Data class AddressBookData {
 	@Column(name="departments")
 	private List<String> departments;
 	
-	public AddressBookData(int contactId,AddressBookDTO addressbookdto) {
-		super();
-		this.contactId = contactId;
+	public AddressBookData(AddressBookDTO addressbookdto) {
+		this.updateAddressBookData(addressbookdto);
+	}
+	
+	public  void updateAddressBookData(AddressBookDTO addressbookdto) {
+		//this.contactId = contactId;
 		this.name=addressbookdto.name;
 		this.phoneNo=addressbookdto.phoneNo;
 		this.address=addressbookdto.address;
