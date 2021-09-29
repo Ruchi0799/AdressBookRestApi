@@ -9,7 +9,9 @@ import javax.persistence.*;
 import com.bridgelabz.addressbookrestapi.dto.AddressBookDTO;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Entity
 @Table(name="contacts")
 public @Data class AddressBookData {

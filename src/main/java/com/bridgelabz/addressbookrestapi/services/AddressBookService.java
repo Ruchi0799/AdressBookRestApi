@@ -30,9 +30,7 @@ public class AddressBookService implements IAddressBookService {
 
 	public AddressBookData getcontactDataNyId(int contactId) {
 		// TODO Auto-generated method stub
-		return addressbookList.stream().filter(contactData->contactData.getContactId()==contactId)
-				.findFirst()
-				.orElseThrow(()->new AddressBookException("contact not found"));
+		return addressbookrepository.findById(contactId).orElseThrow(()->new AddressBookException("contact not found"));
 	
 	}
 
@@ -48,15 +46,14 @@ public class AddressBookService implements IAddressBookService {
 	public AddressBookData updatedContactData(int contactId, AddressBookDTO addressbookDTO) {
 		// TODO Auto-generated method stub
 		AddressBookData addressbookData=this.getcontactDataNyId(contactId);
-		addressbookData.setName(addressbookDTO.name);
-		addressbookData.setPhoneNo(addressbookDTO.phoneNo);
-		addressbookList.set(contactId-1, addressbookData);
-		return addressbookData;
+		addressbookData.updateAddressBookData(addressbookDTO);
+		return addressbookrepository.save(addressbookData);
 	}
 
 	public void deleteAddressBookData(int contactId) {
 		// TODO Auto-generated method stub
-		addressbookList.remove(contactId-1);
+		AddressBookData addressbookData=this.getcontactDataNyId(contactId);
+		addressbookrepository.delete(addressbookData);;
 	}
 
 

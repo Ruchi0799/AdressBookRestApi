@@ -5,8 +5,10 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@NoArgsConstructor
 public @ToString class AddressBookDTO {
 	
 	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee name Invalid")
