@@ -56,6 +56,12 @@ public class AddressBookService implements IAddressBookService {
 		addressbookrepository.delete(addressbookData);;
 	}
 
+	@Override
+	public List<AddressBookData> getContactByDepartment(String department) {
+		// TODO Auto-generated method stub
+		return addressbookrepository.findcontactByDepartment(department);
+	}
+
 
 
 }
