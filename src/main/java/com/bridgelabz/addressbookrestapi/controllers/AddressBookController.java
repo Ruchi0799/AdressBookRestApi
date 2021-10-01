@@ -32,7 +32,7 @@ public class AddressBookController {
 	@Autowired
 	private IAddressBookService AddressBookService;
 
-	@RequestMapping({"","/","/get"})
+	@GetMapping({"","/","/get"})
 	public ResponseEntity<ResponseDTO>  getaddressbookData(){
 		List<AddressBookData> addressbookData=null;
 		addressbookData=AddressBookService.getAddressBookData();
